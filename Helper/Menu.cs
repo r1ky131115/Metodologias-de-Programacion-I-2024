@@ -1,9 +1,11 @@
 ﻿using Metodologias_de_Programacion_I_2024.Clases;
 using Metodologias_de_Programacion_I_2024.Clases.Adapter;
 using Metodologias_de_Programacion_I_2024.Clases.Command;
+using Metodologias_de_Programacion_I_2024.Clases.Composite;
 using Metodologias_de_Programacion_I_2024.Clases.Decorator;
 using Metodologias_de_Programacion_I_2024.Clases.FactoryMethod;
 using Metodologias_de_Programacion_I_2024.Clases.Strategy;
+using Metodologias_de_Programacion_I_2024.Clases.Template_Method;
 using Metodologias_de_Programacion_I_2024.Colecciones;
 using Metodologias_de_Programacion_I_2024.Interfaces;
 using Metodologias_de_Programacion_I_2024.Interfaces.Adapter;
@@ -326,9 +328,9 @@ namespace Metodologias_de_Programacion_I_2024
             {
                 IAlumno alumnoPorFabrica = (IAlumno)new FabricaDeAlumno().crearAleatorio();
                 AlumnoMuyEstudioso alumnoMuyEstudioso = new AlumnoMuyEstudioso(
-                    alumnoPorFabrica.GetNombre(), 
-                    alumnoPorFabrica.GetDni(), 
-                    alumnoPorFabrica.GetLegajo(), 
+                    alumnoPorFabrica.GetNombre(),
+                    alumnoPorFabrica.GetDni(),
+                    alumnoPorFabrica.GetLegajo(),
                     alumnoPorFabrica.GetPromerdio()
                     );
 
@@ -429,5 +431,47 @@ namespace Metodologias_de_Programacion_I_2024
             //commandAulaLlena.Ejecutar();
             pila.setOrdenAulaLlena(commandAulaLlena);
         }
+
+        public static void Practica_6()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("******************************************************");
+            Console.WriteLine("PRACTICA 6:");
+            Console.WriteLine("******************************************************");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nPatron Composite...\n");
+            Console.ResetColor();
+
+            Aula aula = new Aula();
+            Teacher teacher = new Teacher();
+
+            AlumnoCompuesto alumnoCompuesto = new AlumnoCompuesto();
+
+            for (int i = 0; i < 5; i++)
+            {
+                IAlumno proxyAlumno = (IAlumno)new FabricaAlumnoCompuesto().crearAleatorio();
+
+                alumnoCompuesto.AgregarAlumno(proxyAlumno);
+            }
+
+            alumnoCompuesto.Distraerse();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\nFactory Method...\n");
+            Console.ResetColor();
+
+            var jugador1 = new Persona("Alice", 123);
+            var jugador2 = new Persona("Bob", 321);
+            var jugadores = new List<Persona> { jugador1, jugador2 };
+            int puntosGanador = 15; // Puntos necesarios para ganar
+
+            JuegoCartas juego = new JuegoTruco(jugadores, puntosGanador);
+            Persona ganador = juego.Jugar();
+
+            Console.WriteLine($"La persona ganadora es: {ganador.GetNombre()}");
+        }
+
     }
 }
