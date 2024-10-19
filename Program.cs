@@ -41,6 +41,9 @@ class Program
                 case 4:
                     Menu.Practica_4();
                     break;
+                case 5:
+                    Menu.Practica_5();
+                    break;
                 case 0:
                     continuar = false; // Salir del bucle
                     break;

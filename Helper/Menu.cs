@@ -1,11 +1,13 @@
 ﻿using Metodologias_de_Programacion_I_2024.Clases;
 using Metodologias_de_Programacion_I_2024.Clases.Adapter;
+using Metodologias_de_Programacion_I_2024.Clases.Command;
 using Metodologias_de_Programacion_I_2024.Clases.Decorator;
 using Metodologias_de_Programacion_I_2024.Clases.FactoryMethod;
 using Metodologias_de_Programacion_I_2024.Clases.Strategy;
 using Metodologias_de_Programacion_I_2024.Colecciones;
 using Metodologias_de_Programacion_I_2024.Interfaces;
 using Metodologias_de_Programacion_I_2024.Interfaces.Adapter;
+using Metodologias_de_Programacion_I_2024.Interfaces.Command;
 
 namespace Metodologias_de_Programacion_I_2024
 {
@@ -297,8 +299,8 @@ namespace Metodologias_de_Programacion_I_2024
 
         public static void Practica_4()
         {
-            Console.WriteLine("******************************************************");
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("******************************************************");
             Console.WriteLine("PRACTICA 4:");
             Console.WriteLine("******************************************************");
             Console.ResetColor();
@@ -381,6 +383,51 @@ namespace Metodologias_de_Programacion_I_2024
                 Decorador decorador = new LegajoDecorator((IAlumno)alum);
                 Console.WriteLine(decorador.MostrarCalificacion());
             }
+        }
+
+        public static void Practica_5()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("******************************************************");
+            Console.WriteLine("PRACTICA 5:");
+            Console.WriteLine("******************************************************");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Patron Proxy...");
+            Console.ResetColor();
+
+            Teacher teacher = new Teacher();
+            IAlumno proxyAlumno = (IAlumno)new FabricaDeProxyAlumno().crearAleatorio();
+
+            Student student = new AlumnoToStudent(proxyAlumno);
+            teacher.goToClass(student);
+            proxyAlumno.SetStrategy(new CompararPorCalificacion());
+
+            teacher.teachingAClass();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\nPatron Command...");
+            Console.ResetColor();
+
+            Aula aula = new Aula();
+            Pila pila = new Pila();
+
+            IOrdenEnAula1 commandInicio = new OrdenInicio(aula);
+            IOrdenEnAula2 commandReceptor = new OrdenReceptor(aula);
+            IOrdenEnAula1 commandAulaLlena = new OrdenAulaLlena(aula);
+
+            pila.setOrdenInicio(commandInicio);
+
+            //commandInicio.Ejecutar();
+            for (int i = 0; i < 10; i++)
+            {
+                //commandReceptor.Ejecutar(new FabricaDeAlumno().crearAleatorio());
+                pila.setOrdenLlegaAlumno(commandReceptor, new FabricaDeAlumno().crearAleatorio());
+            }
+
+            //commandAulaLlena.Ejecutar();
+            pila.setOrdenAulaLlena(commandAulaLlena);
         }
     }
 }

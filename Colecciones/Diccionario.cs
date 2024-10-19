@@ -1,12 +1,18 @@
-﻿using Metodologias_de_Programacion_I_2024.Clases.Iteradores;
+﻿using Metodologias_de_Programacion_I_2024.Clases.Command;
+using Metodologias_de_Programacion_I_2024.Clases.Iteradores;
 using Metodologias_de_Programacion_I_2024.Interfaces;
+using Metodologias_de_Programacion_I_2024.Interfaces.Command;
 using Metodologias_de_Programacion_I_2024.Interfaces.Iterator;
 
 namespace Metodologias_de_Programacion_I_2024.Colecciones
 {
-    public class Diccionario : Coleccionable, Iterable
+    public class Diccionario : Coleccionable, Iterable, IOrdenable
     {
         public List<ClaveValor> elementos;
+
+        IOrdenEnAula1 ordenInicio;
+        IOrdenEnAula1 ordenAulaLlena;
+        IOrdenEnAula2 ordenReceptor;
 
         public Diccionario()
         {
@@ -23,7 +29,21 @@ namespace Metodologias_de_Programacion_I_2024.Colecciones
             }
             else
             {
+                ClaveValor cl = new ClaveValor(clave, valor);
+                elementos.Add(cl);
+
+                if (elementos.Count == 0)
+                {
+                    setOrdenInicio(ordenInicio);
+                }
+
+                setOrdenLlegaAlumno(ordenReceptor, (Comparable)cl);
                 elementos.Add(new ClaveValor(clave, valor));
+
+                if (elementos.Count == 40)
+                {
+                    setOrdenAulaLlena(ordenAulaLlena);
+                }
             }
         }
 
@@ -96,6 +116,24 @@ namespace Metodologias_de_Programacion_I_2024.Colecciones
         public Iterador CrearIterador()
         {
             return new IteradorDeDiccionario(this);
+        }
+
+        public void setOrdenInicio(IOrdenEnAula1 ordenEnAula1)
+        {
+            ordenInicio = ordenEnAula1;
+            ordenInicio?.Ejecutar();
+        }
+
+        public void setOrdenLlegaAlumno(IOrdenEnAula2 ordenEnAula2, Comparable comparable)
+        {
+            ordenReceptor = ordenEnAula2;
+            ordenReceptor?.Ejecutar(comparable);
+        }
+
+        public void setOrdenAulaLlena(IOrdenEnAula1 ordenEnAula1)
+        {
+            ordenAulaLlena = ordenEnAula1;
+            ordenAulaLlena?.Ejecutar();
         }
     }
 

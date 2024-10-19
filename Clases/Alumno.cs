@@ -3,7 +3,6 @@ using Metodologias_de_Programacion_I_2024.Interfaces;
 using Metodologias_de_Programacion_I_2024.Interfaces.Adapter;
 using Metodologias_de_Programacion_I_2024.Interfaces.Observer;
 using Metodologias_de_Programacion_I_2024.Interfaces.Strategy;
-using System;
 
 namespace Metodologias_de_Programacion_I_2024.Clases
 {

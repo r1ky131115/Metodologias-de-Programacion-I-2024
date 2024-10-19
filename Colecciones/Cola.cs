@@ -1,16 +1,32 @@
 ﻿using Metodologias_de_Programacion_I_2024.Clases.Iteradores;
 using Metodologias_de_Programacion_I_2024.Interfaces;
+using Metodologias_de_Programacion_I_2024.Interfaces.Command;
 using Metodologias_de_Programacion_I_2024.Interfaces.Iterator;
 
 namespace Metodologias_de_Programacion_I_2024.Colecciones
 {
-    public class Cola : Coleccionable, Iterable
+    public class Cola : Coleccionable, Iterable, IOrdenable
     {
         public List<Comparable> cola = new List<Comparable>();
 
+        IOrdenEnAula1 ordenInicio;
+        IOrdenEnAula1 ordenAulaLlena;
+        IOrdenEnAula2 ordenReceptor;
+
         public void Agregar(Comparable comparable)
         {
+            if (cola.Count == 0)
+            {
+                setOrdenInicio(ordenInicio);
+            }
+
+            setOrdenLlegaAlumno(ordenReceptor, comparable);
             cola.Add(comparable);
+
+            if (cola.Count == 40)
+            {
+                setOrdenAulaLlena(ordenAulaLlena);
+            }
         }
 
         public bool Contiene(Comparable comparable)
@@ -76,6 +92,24 @@ namespace Metodologias_de_Programacion_I_2024.Colecciones
                 }
             }
             return min;
+        }
+
+        public void setOrdenInicio(IOrdenEnAula1 ordenEnAula1)
+        {
+            ordenInicio = ordenEnAula1;
+            ordenInicio?.Ejecutar();
+        }
+
+        public void setOrdenLlegaAlumno(IOrdenEnAula2 ordenEnAula2, Comparable comparable)
+        {
+            ordenReceptor = ordenEnAula2;
+            ordenReceptor?.Ejecutar(comparable);
+        }
+
+        public void setOrdenAulaLlena(IOrdenEnAula1 ordenEnAula1)
+        {
+            ordenAulaLlena = ordenEnAula1;
+            ordenAulaLlena?.Ejecutar();
         }
     }
 }
