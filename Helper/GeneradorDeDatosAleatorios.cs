@@ -1,9 +1,25 @@
-﻿using System.Text;
+﻿using Metodologias_de_Programacion_I_2024.Interfaces.Chain_of_responsability;
+using System.Text;
 
 namespace Metodologias_de_Programacion_I_2024
 {
-    public static class GeneradorDeDatosAleatorios
+    public class GeneradorDeDatosAleatorios : IObtenedorDeDatos
     {
+        private IObtenedorDeDatos _siguiente;
+
+        public void EstablecerSiguiente(IObtenedorDeDatos siguiente)
+        {
+            _siguiente = siguiente;
+        }
+
+        public void ObtenerDatos()
+        {
+            Console.WriteLine("Generando un número aleatorio: " + numeroAleatorio(100));
+            Console.WriteLine("Generando una cadena aleatoria: " + StringAleatorio(10));
+
+            _siguiente?.ObtenerDatos();
+        }
+
         public static int numeroAleatorio(int max)
         {
             if (max <= 0) throw new ArgumentOutOfRangeException(nameof(max), "El valor debe ser mayor que 0.");

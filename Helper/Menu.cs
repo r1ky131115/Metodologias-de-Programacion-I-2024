@@ -9,6 +9,7 @@ using Metodologias_de_Programacion_I_2024.Clases.Template_Method;
 using Metodologias_de_Programacion_I_2024.Colecciones;
 using Metodologias_de_Programacion_I_2024.Interfaces;
 using Metodologias_de_Programacion_I_2024.Interfaces.Adapter;
+using Metodologias_de_Programacion_I_2024.Interfaces.Chain_of_responsability;
 using Metodologias_de_Programacion_I_2024.Interfaces.Command;
 
 namespace Metodologias_de_Programacion_I_2024
@@ -473,5 +474,25 @@ namespace Metodologias_de_Programacion_I_2024
             Console.WriteLine($"La persona ganadora es: {ganador.GetNombre()}");
         }
 
+        public static void Practica_7()
+        {
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("******************************************************");
+            Console.WriteLine("PRACTICA 7:");
+            Console.WriteLine("******************************************************");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nPatron Chain of responsability...\n");
+            Console.ResetColor();
+
+            IObtenedorDeDatos generador = new GeneradorDeDatosAleatorios();
+            IObtenedorDeDatos lector = new LectorDeDatos();
+
+            generador.EstablecerSiguiente(lector);
+
+            generador.ObtenerDatos();
+        }
     }
 }

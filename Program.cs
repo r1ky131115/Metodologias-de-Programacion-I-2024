@@ -21,6 +21,7 @@ class Program
             Console.WriteLine("4- Adapter y Decorator");
             Console.WriteLine("5- Proxy y Command");
             Console.WriteLine("6- Composite y Template Method");
+            Console.WriteLine("7- Chain of ResponsabilityArchivo y Singleton");
             Console.WriteLine("0- Salir");
             Console.WriteLine();
 
@@ -46,6 +47,9 @@ class Program
                     break;
                 case 6:
                     Menu.Practica_6();
+                    break;
+                case 7:
+                    Menu.Practica_7();
                     break;
                 case 0:
                     continuar = false; // Salir del bucle
