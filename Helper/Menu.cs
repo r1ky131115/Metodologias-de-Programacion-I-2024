@@ -421,16 +421,15 @@ namespace Metodologias_de_Programacion_I_2024
             IOrdenEnAula1 commandAulaLlena = new OrdenAulaLlena(aula);
 
             pila.setOrdenInicio(commandInicio);
+            pila.setOrdenLlegaAlumno(commandReceptor, new FabricaDeAlumno().crearAleatorio());
 
-            //commandInicio.Ejecutar();
-            for (int i = 0; i < 10; i++)
-            {
-                //commandReceptor.Ejecutar(new FabricaDeAlumno().crearAleatorio());
-                pila.setOrdenLlegaAlumno(commandReceptor, new FabricaDeAlumno().crearAleatorio());
-            }
-
-            //commandAulaLlena.Ejecutar();
             pila.setOrdenAulaLlena(commandAulaLlena);
+
+            for (int i = 0; i < 40; i++)
+            {
+                Alumno alumno = (Alumno)Fabrica.CrearAleatorio(0);
+                pila.Agregar(alumno);
+            }
         }
 
         public static void Practica_6()

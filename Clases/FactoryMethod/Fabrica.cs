@@ -1,22 +1,19 @@
 ﻿using Metodologias_de_Programacion_I_2024.Interfaces;
-using Metodologias_de_Programacion_I_2024.Interfaces.FactoryMethod;
 
 namespace Metodologias_de_Programacion_I_2024.Clases.FactoryMethod
 {
     public abstract class Fabrica
     {
         public abstract Comparable crearAleatorio();
-        public static Comparable CrearAleatorio()
+        public static Comparable CrearAleatorio(int opcion = 1)
         {
-            int opcion = GeneradorDeDatosAleatorios.numeroAleatorio(1);
-
             Fabrica creator = FabricaOpcion(opcion);
 
             return creator.crearAleatorio();
         }
 
         public abstract Comparable crearPorTeclado();
-        public static Comparable CrearPorTeclado(int opcion)
+        public static Comparable CrearPorTeclado(int opcion = 1)
         {
             Fabrica creator = FabricaOpcion(opcion);
 

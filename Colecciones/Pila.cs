@@ -17,15 +17,15 @@ namespace Metodologias_de_Programacion_I_2024.Colecciones
         {
             if (pila.Count == 0)
             {
-                setOrdenInicio(ordenInicio);
+                ordenInicio.Ejecutar();
             }
 
-            setOrdenLlegaAlumno(ordenReceptor, comparable);
+            ordenReceptor.Ejecutar(comparable);
             pila.Add(comparable);
 
             if (pila.Count == 40)
             {
-                setOrdenAulaLlena(ordenAulaLlena);
+                ordenAulaLlena.Ejecutar();
             }
         }
 

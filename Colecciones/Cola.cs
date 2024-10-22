@@ -17,15 +17,15 @@ namespace Metodologias_de_Programacion_I_2024.Colecciones
         {
             if (cola.Count == 0)
             {
-                setOrdenInicio(ordenInicio);
+                ordenInicio.Ejecutar();
             }
 
-            setOrdenLlegaAlumno(ordenReceptor, comparable);
+            ordenReceptor.Ejecutar(comparable);
             cola.Add(comparable);
 
             if (cola.Count == 40)
             {
-                setOrdenAulaLlena(ordenAulaLlena);
+                ordenAulaLlena.Ejecutar();
             }
         }
 
@@ -97,19 +97,16 @@ namespace Metodologias_de_Programacion_I_2024.Colecciones
         public void setOrdenInicio(IOrdenEnAula1 ordenEnAula1)
         {
             ordenInicio = ordenEnAula1;
-            ordenInicio?.Ejecutar();
         }
 
         public void setOrdenLlegaAlumno(IOrdenEnAula2 ordenEnAula2, Comparable comparable)
         {
             ordenReceptor = ordenEnAula2;
-            ordenReceptor?.Ejecutar(comparable);
         }
 
         public void setOrdenAulaLlena(IOrdenEnAula1 ordenEnAula1)
         {
             ordenAulaLlena = ordenEnAula1;
-            ordenAulaLlena?.Ejecutar();
         }
     }
 }

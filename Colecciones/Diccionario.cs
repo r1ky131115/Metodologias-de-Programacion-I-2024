@@ -1,5 +1,4 @@
-﻿using Metodologias_de_Programacion_I_2024.Clases.Command;
-using Metodologias_de_Programacion_I_2024.Clases.Iteradores;
+﻿using Metodologias_de_Programacion_I_2024.Clases.Iteradores;
 using Metodologias_de_Programacion_I_2024.Interfaces;
 using Metodologias_de_Programacion_I_2024.Interfaces.Command;
 using Metodologias_de_Programacion_I_2024.Interfaces.Iterator;
@@ -34,15 +33,15 @@ namespace Metodologias_de_Programacion_I_2024.Colecciones
 
                 if (elementos.Count == 0)
                 {
-                    setOrdenInicio(ordenInicio);
+                    ordenInicio.Ejecutar();
                 }
 
-                setOrdenLlegaAlumno(ordenReceptor, (Comparable)cl);
+                ordenReceptor.Ejecutar(clave);
                 elementos.Add(new ClaveValor(clave, valor));
 
                 if (elementos.Count == 40)
                 {
-                    setOrdenAulaLlena(ordenAulaLlena);
+                    ordenAulaLlena.Ejecutar();
                 }
             }
         }

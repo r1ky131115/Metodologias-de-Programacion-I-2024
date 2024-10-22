@@ -1,5 +1,4 @@
-﻿using Metodologias_de_Programacion_I_2024.Clases.Command;
-using Metodologias_de_Programacion_I_2024.Interfaces;
+﻿using Metodologias_de_Programacion_I_2024.Interfaces;
 using Metodologias_de_Programacion_I_2024.Interfaces.Command;
 using Metodologias_de_Programacion_I_2024.Interfaces.Iterator;
 using Metodologias_de_Programacion_I_2024.Iteradores;
@@ -20,15 +19,15 @@ namespace Metodologias_de_Programacion_I_2024.Colecciones
         {
             if (coleccion.Count == 0)
             {
-                setOrdenInicio(ordenInicio);
+                ordenInicio.Ejecutar();
             }
 
-            setOrdenLlegaAlumno(ordenReceptor, elemento);
+            ordenReceptor.Ejecutar(elemento);
             coleccion.Add(elemento);
 
             if (coleccion.Count == 40)
             {
-                setOrdenAulaLlena(ordenAulaLlena);
+                ordenAulaLlena.Ejecutar();
             }
         }
         public bool pertenece(Comparable comparable)
