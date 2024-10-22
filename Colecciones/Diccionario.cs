@@ -6,7 +6,7 @@ using Metodologias_de_Programacion_I_2024.Interfaces.Iterator;
 
 namespace Metodologias_de_Programacion_I_2024.Colecciones
 {
-    public class Diccionario : Coleccionable, Iterable, IOrdenable
+    public class Diccionario : Coleccionable, IOrdenable
     {
         public List<ClaveValor> elementos;
 

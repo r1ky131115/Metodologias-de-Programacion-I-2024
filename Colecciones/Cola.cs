@@ -5,7 +5,7 @@ using Metodologias_de_Programacion_I_2024.Interfaces.Iterator;
 
 namespace Metodologias_de_Programacion_I_2024.Colecciones
 {
-    public class Cola : Coleccionable, Iterable, IOrdenable
+    public class Cola : Coleccionable, IOrdenable
     {
         public List<Comparable> cola = new List<Comparable>();
 

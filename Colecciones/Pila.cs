@@ -5,7 +5,7 @@ using Metodologias_de_Programacion_I_2024.Interfaces.Iterator;
 
 namespace Metodologias_de_Programacion_I_2024.Colecciones
 {
-    public class Pila : Coleccionable, Iterable, IOrdenable
+    public class Pila : Coleccionable, IOrdenable
     {
         public List<Comparable> pila = new List<Comparable>();
 

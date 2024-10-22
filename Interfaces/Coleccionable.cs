@@ -1,6 +1,8 @@
-﻿namespace Metodologias_de_Programacion_I_2024.Interfaces
+﻿using Metodologias_de_Programacion_I_2024.Interfaces.Iterator;
+
+namespace Metodologias_de_Programacion_I_2024.Interfaces
 {
-    public interface Coleccionable
+    public interface Coleccionable : Iterable
     {
         int Cuantos();
         Comparable Minimo();

@@ -6,7 +6,7 @@ using Metodologias_de_Programacion_I_2024.Iteradores;
 
 namespace Metodologias_de_Programacion_I_2024.Colecciones
 {
-    public class Conjunto : Coleccionable, Iterable, IOrdenable
+    public class Conjunto : Coleccionable, IOrdenable
     {
         IOrdenEnAula1 ordenInicio;
         IOrdenEnAula1 ordenAulaLlena;

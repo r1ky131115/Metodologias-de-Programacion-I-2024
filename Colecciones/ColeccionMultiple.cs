@@ -73,5 +73,10 @@ namespace Metodologias_de_Programacion_I_2024.Colecciones
         {
             return Pila.Contiene(comparable) || Cola.Contiene(comparable);
         }
+
+        public Iterador CrearIterador()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
