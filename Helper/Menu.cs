@@ -229,10 +229,10 @@ namespace Metodologias_de_Programacion_I_2024
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Iterando coleccion...");
             Console.ResetColor();
-            helper.ImprimirElementos(colaAlumnos, 1);
-            helper.ImprimirElementos(pilaAlumnos, 2);
-            helper.ImprimirElementos(diccionario, 3);
-            helper.ImprimirElementos(conjunto, 4);
+            helper.ImprimirElementos(colaAlumnos);
+            helper.ImprimirElementos(pilaAlumnos);
+            helper.ImprimirElementos(diccionario);
+            helper.ImprimirElementos(conjunto);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Fin de la iteracción");
             Console.ResetColor();

@@ -102,35 +102,9 @@ namespace Metodologias_de_Programacion_I_2024
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="coleccionable">Colecciones del tipo: Pila, Cola, Diccionario o Conjunto</param>
-        /// <param name="tipoIter">1 para cola
-        /// 2 para pila
-        /// 3 para diccionario
-        /// 4 para conjunto</param>
-        public void ImprimirElementos(Coleccionable coleccionable, int tipoIter)
+        public void ImprimirElementos(Coleccionable coleccionable)
         {
-            Iterador iterador = null;
-
-            switch (tipoIter)
-            {
-                case 1:
-                    iterador = new IteradorDeCola(coleccionable);
-                    break;
-                case 2:
-                    iterador = new IteradorDePila(coleccionable);
-                    break;
-                case 3:
-                    iterador = new IteradorDeDiccionario(coleccionable);
-                    break;
-                case 4:
-                    iterador = new IteradorDeConjunto(coleccionable);
-                    break;
-                default:
-                    break;
-            }
+            Iterador iterador = coleccionable.CrearIterador();
 
             while (!iterador.fin())
             {
